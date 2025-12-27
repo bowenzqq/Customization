@@ -1,25 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=2.0, user-scalable=yes">
     <title>大横智旋 - 企业手册 (单页版)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* ================= 基础设置 ================= */
         body { 
             font-family: "Microsoft YaHei", "SimHei", sans-serif; 
-            background-color: #e5e7eb; /* 灰色背景衬托白纸 */
+            background-color: #e5e7eb;
+            min-width: 794px;
+            overflow-x: auto;
         }
         
-        /* A4 纸张尺寸模拟 (宽 210mm : 高 297mm ≈ 1:1.414) */
         .a4-page {
             width: 100%;
-            max-width: 794px; /* A4 像素宽度 (96dpi) */
+            max-width: 794px;
             aspect-ratio: 210/297;
             background-color: white;
-            margin: 0 auto 40px auto; /* 页面间距 */
+            margin: 0 auto 40px auto;
             position: relative;
             overflow: hidden;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
@@ -27,19 +26,20 @@
             flex-direction: column;
         }
 
-        /* 打印优化：打印时去除背景和阴影 */
+        table {
+            width: 100% !important;
+            table-layout: fixed;
+        }
+
         @media print {
-            body { background: none; }
+            body { background: none; min-width: auto; }
             .a4-page { margin: 0; box-shadow: none; page-break-after: always; }
         }
 
-        /* ================= 品牌色 ================= */
         .bg-brand { background-color: #004a8f; }
         .text-brand { color: #004a8f; }
         .border-brand { border-color: #004a8f; }
 
-        /* ================= 特殊形状 ================= */
-        /* 蓝色梯形页眉 (左侧) */
         .header-trap-left {
             background-color: #004a8f;
             transform: skewX(20deg);
@@ -47,7 +47,6 @@
             padding-left: 30px;
             padding-right: 20px;
         }
-        /* 蓝色梯形页眉 (右侧) */
         .header-trap-right {
             background-color: #004a8f;
             transform: skewX(-20deg);
@@ -55,7 +54,6 @@
             padding-right: 30px;
             padding-left: 20px;
         }
-        /* 梯形内的文字反向倾斜，保持直立 */
         .trap-text {
             transform: skewX(-20deg);
             display: inline-block;
@@ -65,16 +63,18 @@
             display: inline-block;
         }
 
-        /* 封面波浪遮罩 */
         .wave-mask {
             mask-image: linear-gradient(to top, black 50%, transparent 100%);
             -webkit-mask-image: linear-gradient(to top, black 50%, transparent 100%);
         }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body class="py-10">
-
-
 
        <!-- ==================== 第 1 页：封面 (背景全屏铺满版) ==================== -->
     <div class="a4-page relative w-full h-full overflow-hidden flex flex-col items-center">
@@ -940,11 +940,5 @@
     <!-- 3. 页码 (右下角) -->
   
 </div>
-
-
-
-
-
-
 </body>
 </html>
